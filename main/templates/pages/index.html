@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'landing.css' %}">
+{% endblock %}
+
+{% block content %}
+<section>
+    <div class="main">
+        <div class="text-top">
+            <h1>Website<br>for<br>voting</h1>
+        </div>
+        
+        
+    </div>
+</section>
+<section style="align-items: top;">
+    <div class="possibilities">
+        <h1 style="font-size: 55px;">try</h1>
+        <div class="buttons">
+            <div class="row">
+                <button class="btn"><a href="/votings">watch <br> votings</a></button>
+                <button class="btn"><a href="/create_voting">create your voiting</a></button>
+            </div>
+            <div class="row">
+                <button class="btn"> <a href="/registration">create profile</a></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    window.addEventListener('load', function () {
+        let anchors = document.querySelectorAll('a[href*="#"]');
+        for (let anchor of anchors) {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault()
+
+                let blockID = anchor.getAttribute('href').substr(1);
+
+                if (blockID[0] == '#')
+                    blockID = blockID.substr(1);
+
+                document.getElementById(blockID).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                })
+            })
+        }
+    })
+
+</script>
+{% endblock %}
